@@ -1,0 +1,72 @@
+/* MOBILE: */
+    /* Header Mobile */
+@media (max-width: 700px) {
+    header {
+        .menu {display: block;}
+        .search {display: none;}
+        & nav {
+            display: flex;
+                flex-direction: column;
+            background-color: black;
+            .navHeaderMobileJS {display: none;}
+            .openNavJS {
+                display: inline-block;
+                animation: animateNavHeader 0.66s both;
+            }
+        }
+        & nav .more .more-list {
+            transform: translateX(-200%);
+            &:hover {transform: translateX(0);}
+        }
+        
+    }
+@keyframes animateNavHeader {
+    0% {opacity: 0; transform: translateX(-150%);}
+    100% {opacity: 1; transform: translateX(0);}
+}
+}
+
+@media (max-width: 740px) {
+    #band {
+        .list-members {
+            flex-wrap: wrap;
+            .members {width: 66% !important;}
+        }
+    }
+    #tour {
+        .places-tour {
+            .columns {
+                width: 100% !important;
+                margin: 10px 0;
+            }
+        }
+    }
+    #contact {
+        .content {
+            flex-wrap: wrap;
+            .info, .getInformation {width: 100% !important;}
+            .getInformation {
+                margin-top: 25px;
+                .name, .email {width: 100% !important;}
+                .name {margin-bottom: 10px;}
+            }
+        }
+    }
+}
+        
+/* Change the height position of Modal-Ticket for Tablet */
+@media (min-height: 700px) {
+    @keyframes openModalTicket-animate {
+        0% {opacity: 0; transform: translateY(-100%);}
+        100% {opacity: 1; transform: translateY(25%);}
+    }
+    @keyframes closeModalTicket-animate {
+        0% {opacity: 1; display: flex;}
+        100% {opacity: 0; display: none; transform: translateY(-100%);}
+    }
+}
+@media (max-height: 550px) {
+    .modal-tickets {
+        overflow: scroll; 
+    }
+}
