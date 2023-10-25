@@ -1,0 +1,546 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+/* SCROLL-BAR */
+::-webkit-scrollbar {
+    width: 9px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px black;
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.6); 
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.8); 
+}
+
+/* HEADER */
+header {
+    --height-header: 50px;
+    height: var(--height-header);
+    background-color: black;
+    z-index: 5;
+    position: fixed;
+        top: 0;
+        width: 100%;
+    & nav {
+        & a, .more {
+            display: inline-block;
+            line-height: var(--height-header);
+            padding: 0 26px;
+            color: white;
+            width: fit-content;
+            font-size: 1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            & > i {                     /* For icon of .more */
+                font-size: 0.85rem;
+                font-weight: bolder;
+            }
+            &:hover {                   /* For all a */
+                background-color: gainsboro;
+                color: black;
+                font-weight: bold;
+            }
+        }
+        .more {
+            position: relative;
+            .more-list {
+                position: absolute;
+                    top: 100%;
+                    left: 0;
+                background-color: white;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.8);
+                opacity: 0;
+                transform: translateY(-200%);
+                transition: 0.5s ease-out;
+                z-index: -1;
+                & a {
+                    padding: 0 15px;
+                    width: 180px;
+                    color: black;
+                    font-size: 1rem;
+                    font-weight: normal;
+                    text-transform: none;
+                    display: none;
+                    &:hover {font-weight: bold;}
+                }
+            }
+        }
+    }
+    .search, .menu {
+        position: absolute;
+            top: 0;
+            right: 0;
+        color: white;
+        font-size: 1.3rem;
+        font-weight: bolder;
+        padding: 0 23px;
+        cursor: pointer;
+        line-height: var(--height-header);
+    }
+    .search:hover {background-color: orangered;}
+    .menu:hover {background-color: gainsboro; color: black;}
+    .menu {display: none;}
+}
+@media (min-width: 700px) {
+    header nav .more:hover {
+        .more-list {
+            opacity: 1;
+            transform: translateY(0);
+            & a {display: block;}
+        }
+    }
+}
+
+/* SLIDER IMG THE BAND */
+.slider-theBand {
+    margin-top: 50px;
+    .slides-img {
+        position: relative;
+        & img {
+            width: 100%; 
+            display: block;
+        }
+        .content {
+            position: absolute;
+                bottom: 10%;
+            width: 100%;
+            color: white;
+            text-align: center;
+            font-size: 2vw;
+            font-weight: bold;
+            text-shadow: 5px 5px 8px black;
+            & h3 {margin-bottom: 20px;}
+        }
+    }
+}
+
+/* MAIN CONTENT */
+main {
+    /* Black back-ground for TOUR */
+    .black-backGround {background-color: black;}
+    /* All sections */
+    & section {
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 60px 25px;
+        background-color: white;
+        .heading {
+            text-align: center;
+            & h1 {
+                font-size: 1.8rem;
+                text-transform: uppercase;
+                font-weight: 300;
+                letter-spacing: 5px;
+                margin-bottom: 20px;
+            }
+            & p {
+                font-size: 1.2rem;
+                font-style: italic;
+                opacity: 0.6;
+                margin-bottom: 30px;
+            }
+        }
+
+    /* BAND */
+        &#band {
+            .content {
+                text-align: justify;
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            .list-members {
+                margin: 30px 0 30px 0;
+                list-style-type: none;
+                display: flex;
+                    justify-content: space-around;
+                .members {
+                    width: 20%;
+                    text-align: center;
+                    margin-top: 20px;
+                    .name-members {
+                        font-size: 1rem;
+                        margin: 20px 0;
+                    }
+                    & img {
+                        width: 100%;
+                        border-radius: 6px;
+                    }
+                }
+            }
+        }
+        
+    /* TOUR */
+        &#tour {
+            background-color: black;
+            color: white;
+            .calendar-tour {
+                .rows {
+                    --height-row-calendar: 40px;
+                    color: black;
+                    background-color: white;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+                    height: var(--height-row-calendar);
+                    cursor: default;
+                    position: relative;
+                    & p {display: inline-block;}
+                    .months {
+                        font-size: 0.95rem;
+                        opacity: 0.66;
+                        line-height: var(--height-row-calendar);
+                        margin: 0 20px;
+                    }
+                    .sold {
+                        font-size: 0.9rem;
+                        color: white;
+                        padding: 4px 8px;
+                        background-color: #F44336;
+                        border-radius: 5px;
+                    }
+                    .counting {
+                        position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: 0;
+                        font-size: 1.1rem;
+                        width: 30px;
+                        text-align: center;
+                        line-height: 30px;
+                        color: white;
+                        background-color: black;
+                        border-radius: 50%;
+                        margin-right: 36px;
+                    }
+                }
+            }
+            .places-tour {
+                margin-top: 16px;
+                display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                .columns {
+                    margin-top: 16px;
+                    width: 32%;
+                    color: black;
+                    background-color: white;
+                    cursor: default;
+                    .place-img {
+                        background-color: black;
+                        & img {
+                            width: 100%; 
+                            cursor: pointer;
+                            display: block;
+                            &:hover {opacity: 0.6;}
+                        }
+                    }
+                    .place, .date, .content {margin: 15px;}
+                    .place {font-size: 1.2rem;}
+                    .date {
+                        font-size: 0.95rem;
+                        opacity: 0.6;
+                    }
+                    .content {font-size: 0.9rem;}
+                    .buy {
+                        position: relative;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        margin: 20px 0;
+                        padding: 13px 20px;
+                        border: none;
+                        border-radius: 6px;
+                        font-size: 1rem;
+                        color: white;
+                        background-color: black;
+                        border: 2px solid black;
+                        cursor: pointer;
+                        &:hover {
+                            transition: 0.5s ease-out;
+                            text-transform: uppercase;
+                            background-color: #F44336;
+                            border-color: #F44336;
+                        }
+                        &:active {
+                            transition: none;
+                            font-weight: bold;
+                            color: black;
+                            background-color: ghostwhite; 
+                            border-color: black;
+                        }
+                    }
+                }
+            }
+            .modal-tickets {
+                position: fixed;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                z-index: 6;
+                cursor: default;
+                background-color: rgba(0, 0, 0, 0.6);
+                display: flex;
+                    justify-content: center;
+                display: none;
+                .board-tickets {
+                    margin: 0 15px;
+                    width: 800px;
+                    height: 470px;
+                    animation-name: openModalTicket-animate;
+                        animation-duration: 0.6s;
+                        animation-fill-mode: both;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+                    background-color: white;
+                    background-clip: content-box;
+                    .title {
+                        padding: 50px 0;
+                        font-size: 1.8rem;
+                        text-align: center;
+                        background-color: #009688;
+                        position: relative;
+                        & p {
+                            display: inline-block;
+                            text-transform: uppercase;
+                            letter-spacing: 8px;
+                            margin-left: 15px;
+                        }
+                        .ti-bag {font-weight: bold;}
+                        .close-btn {
+                            position: absolute;
+                                top: 0;
+                                right: 0;
+                            padding: 15px;
+                            color: white;
+                            font-size: 1.3rem;
+                            font-weight: bold;
+                            background-color: #009688;
+                            border: none;
+                            cursor: pointer;
+                            &:hover {
+                                color: black;
+                                background-color: ghostwhite;
+                            }
+                        }
+                    }
+                    & form {
+                        margin: 20px 15px 0px;
+                        .heading-form {
+                            font-size: 1rem;
+                            color: black;
+                            cursor: pointer;
+                            & > i {font-weight: bold;}
+                        }
+                        & input {
+                            padding: 10px;
+                            font-size: 0.9rem;
+                            width: 100%;
+                            border: 1px solid rgba(0, 0, 0, 0.2);
+                            margin-top: 6px;
+                            margin-bottom: 20px;
+                        }
+                        & button {
+                            width: 100%;
+                            padding: 12px 0;
+                            font-size: 1.2rem;
+                            font-weight: bold;
+                            cursor: pointer;
+                            color: white;
+                            background-color: #009688;
+                            border: 2px solid #009688;
+                            & i {
+                                font-weight: bolder;
+                                font-size: 0.85rem;
+                            }
+                            &:hover {
+                                background-color: navy;
+                                border-color: navy;
+                                transition: 1s ease-out;
+                            }
+                            &:active {
+                                color: black;
+                                background-color: ghostwhite;
+                                border-color: black;
+                                transition: none;
+                            }
+                        }
+                    }
+                    .footer-board {
+                        padding: 30px 15px;
+                        color: black;
+                        display: flex;
+                            justify-content: space-between;
+                        .close-btn {
+                            padding: 9px 18px;
+                            font-size: 1rem;
+                            color: white;
+                            background-color: orangered;
+                            border: 2px solid orangered;
+                            cursor: pointer;
+                            transform: translateY(15px);
+                            & i {
+                                font-size: 0.75rem;
+                                font-weight: bolder;
+                            }
+                            &:hover {
+                                color: black;
+                                background-color: ghostwhite;
+                                border: 2px solid black;
+                            }
+                        }
+                        .needHelp {
+                            align-self: center;
+                            font-size: 0.95rem;
+                            & a {
+                                color: #2B9BF4;
+                            }
+                        }
+                    }
+                }
+            }
+            /* For JS */
+            .modal-tickets.open {display: flex;}
+            .modal-tickets.closing-animate {
+                animation-name: closeModalTicket-animate;
+                    animation-duration: 0.6s;
+                    animation-fill-mode: both;
+            }
+        }
+
+    /* CONTACT */
+        &#contact {
+            .content {
+                display: flex;
+                margin-top: 45px;
+                margin-bottom: 30px;
+                .info {
+                    width: 50%;
+                    .rows {
+                        margin-bottom: 10px;
+                        display: flex;
+                        & i {
+                            font-size: 1.3rem;
+                            font-weight: bolder;
+                            margin-right: 20px;
+                        }
+                        & p,a {font-size: 1.2rem;}
+                        & a {
+                            text-decoration: none;
+                            color: black;
+                            &:hover {color: blue; text-decoration: underline;}
+                            &:active {color: red;}
+                        }
+                    }
+                }
+                .getInformation {
+                    width: 50%;
+                    display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                    & input {
+                        padding: 15px 10px;
+                        font-size: 0.95rem;
+                        border: 1px solid rgba(0, 0, 0, 0.3);
+                    }
+                    .name, .email {
+                        width: calc(50% - 9px);
+                    }
+                    .message {
+                        width: 100%;
+                        margin: 10px 0 20px 0;
+                    }
+                    .send-btn {
+                        width: 100%;
+                        text-align: end;
+                        & button {
+                            padding: 13px 20px;
+                            font-size: 1.1rem;
+                            color: white;
+                            background-color: black;
+                            border: none;
+                            cursor: pointer;
+                            border: 2px solid black;
+                            &:hover {
+                                color: black;
+                                background-color: goldenrod;
+                                border-color: goldenrod;
+                            }
+                            &:active {
+                                color: black;
+                                background-color: gainsboro;
+                                border-color: black;
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+
+    /* MAP IMAGE */
+    .map {
+        padding-top: 56.25%;    /* IMG 9:16 */
+        background-image: url(../img/map.jpg);
+        background-size: 100%;
+        filter: grayscale(50%);
+    }
+}
+
+/* FOOTER */
+footer {
+    display: flex;
+        flex-direction:column;
+        align-items: center;
+    padding: 80px 0;
+    background-color: #ebebeb;
+    .icon {
+        font-size: 1.6rem;
+        cursor: pointer;
+        & i {
+            display: inline-block;
+            margin: 0 8px;
+            &.ti-facebook {width: 18px;}
+            &:hover {
+                color: orangered;
+                transition: 0.5s ease-out;
+                transform: translateY(-6px);
+            }
+        }
+    }
+    .description {
+        margin-top: 20px;
+        opacity: 0.6;
+        font-size: 1rem;
+        cursor: default;
+        & a {
+            padding: 15px 0;
+            color: black;
+            &:hover {color: orangered;}
+            &:active {color: aqua;}
+        }
+    }
+}
+
+/* ANIMATION MODAL TICKET */
+@keyframes openModalTicket-animate {
+    0% {opacity: 0; transform: translateY(-100%);}
+    100% {opacity: 1; transform: translateY(12%);}
+}
+@keyframes closeModalTicket-animate {
+    0% {opacity: 1; display: flex;}
+    100% {opacity: 0; display: none; transform: translateY(-100%);}
+}
+
